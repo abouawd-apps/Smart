@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدليل العملي الشامل لتصبح ذكياً 🧠 | Abouawd Studio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cairo for Arabic, Inter for English -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#1e1b4b',
+                        },
+                        accent: {
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7'
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        body {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        html[dir="rtl"] body {
+            font-family: 'Cairo', sans-serif;
+        }
+        html[dir="ltr"] body {
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-card {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #0ea5e9 50%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .dark .gradient-text {
+            background: linear-gradient(135deg, #818cf8 0%, #38bdf8 50%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .memory-tile {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .memory-tile:active {
+            transform: scale(0.95);
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(99, 102, 241, 0.3); }
+            50% { box-shadow: 0 0 28px rgba(14, 165, 233, 0.55); }
+        }
+        .glow-badge {
+            animation: pulseGlow 3s infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white">
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="fixed bottom-5 left-5 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none px-4 sm:px-0"></div>
+
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-white/85 dark:bg-slate-900/85 glass-card border-b border-slate-200/80 dark:border-slate-800/80 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
+            <!-- Logo & Brand -->
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-600 to-sky-500 flex items-center justify-center text-white text-2xl shadow-lg shadow-indigo-500/30">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <div>
+                    <h1 id="navTitle" class="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white leading-tight">
+                        الدليل العملي لتصبح ذكياً
+                    </h1>
+                    <p id="navSubtitle" class="text-xs sm:text-sm text-indigo-600 dark:text-indigo-400 font-semibold">
+                        Abouawd Studio • دليلك التفاعلي
+                    </p>
+                </div>
+            </div>
+
+            <!-- Navigation Links (Desktop) -->
+            <nav class="hidden lg:flex items-center gap-1 bg-slate-100 dark:bg-slate-800/80 p-1.5 rounded-2xl border border-slate-200/60 dark:border-slate-700/60">
+                <a href="#videoSection" data-i18n="navVideo" class="px-3.5 py-2 rounded-xl text-sm font-semibold hover:bg-white dark:hover:bg-slate-700 transition-all">الفيديو والملخص</a>
+                <a href="#pillarsSection" data-i18n="navPillars" class="px-3.5 py-2 rounded-xl text-sm font-semibold hover:bg-white dark:hover:bg-slate-700 transition-all">الأركان الـ 6</a>
+                <a href="#habitsSection" data-i18n="navHabits" class="px-3.5 py-2 rounded-xl text-sm font-semibold hover:bg-white dark:hover:bg-slate-700 transition-all">متتبع العادات</a>
+                <a href="#labSection" data-i18n="navLab" class="px-3.5 py-2 rounded-xl text-sm font-semibold hover:bg-white dark:hover:bg-slate-700 transition-all">مختبر العقل</a>
+                <a href="#quizSection" data-i18n="navQuiz" class="px-3.5 py-2 rounded-xl text-sm font-semibold hover:bg-white dark:hover:bg-slate-700 transition-all">اختبار التقييم</a>
+            </nav>
+
+            <!-- Action Controls: IQ Score Pill, Language Switcher, Dark Mode Toggle -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <!-- Overall Mastery Badge -->
+                <div class="hidden sm:flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-200 dark:border-indigo-800 px-3.5 py-1.5 rounded-xl">
+                    <i class="fa-solid fa-bolt text-amber-500"></i>
+                    <span id="scoreLabel" class="text-xs font-bold text-slate-600 dark:text-slate-300">نقاط الذكاء العملي:</span>
+                    <span id="globalXpBadge" class="text-sm font-black text-indigo-600 dark:text-indigo-400">0 XP</span>
+                </div>
+
+                <!-- Language Switcher Button -->
+                <button id="langToggleBtn" onclick="toggleLanguage()" class="flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-bold text-sm border border-slate-200 dark:border-slate-700 transition-all active:scale-95" title="Switch Language / تغيير اللغة">
+                    <i class="fa-solid fa-globe text-indigo-500"></i>
+                    <span id="langBtnText">English</span>
+                </button>
+
+                <!-- Dark Mode Toggle Button -->
+                <button id="themeToggleBtn" onclick="toggleTheme()" class="w-11 h-11 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-amber-400 flex items-center justify-center border border-slate-200 dark:border-slate-700 transition-all active:scale-95" aria-label="Toggle Dark Mode">
+                    <i id="themeIcon" class="fa-solid fa-sun text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero & Video Section -->
+        <section id="videoSection" class="relative overflow-hidden py-10 sm:py-16">
+            <!-- Decorative Background Blobs -->
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-500/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute top-36 -left-24 w-96 h-96 bg-sky-500/10 dark:bg-sky-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <!-- Hero Header -->
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-100 dark:bg-indigo-950/90 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-xs sm:text-sm font-bold mb-4 glow-badge">
+                        <i class="fa-solid fa-sparkles"></i>
+                        <span data-i18n="heroBadge">تطبيق ويب تفاعلي مبني على محتوى الفيديو</span>
+                    </div>
+                    <h2 data-i18n="heroTitle" class="text-3xl sm:text-5xl font-black tracking-tight mb-4 leading-tight">
+                        الدليل العملي الشامل <span class="gradient-text">لتصبح ذكياً 🧠</span>
+                    </h2>
+                    <p data-i18n="heroDesc" class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+                        الذكاء ليس مجرد موهبة وراثية ثابتة، بل هو مهارة ومنظومة عادات يومية قابلة للتطوير. استكشف خطوات الفيديو وحوّلها إلى ممارسات عملية عبر الأدوات التفاعلية بالأسفل.
+                    </p>
+                </div>
+
+                <!-- Video Player + Interactive Key Takeaways Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <!-- YouTube Video Embed Column -->
+                    <div class="lg:col-span-7 bg-white dark:bg-slate-900 rounded-3xl p-3 sm:p-4 shadow-xl border border-slate-200/80 dark:border-slate-800">
+                        <div class="relative w-full overflow-hidden rounded-2xl bg-slate-950 aspect-video shadow-inner">
+                            <iframe 
+                                id="ytPlayer"
+                                class="w-full h-full"
+                                src="https://www.youtube.com/embed/lyxHvuPzUco?rel=0" 
+                                title="الدليل العملي الشامل لتصبح ذكياً 🧠" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="mt-4 px-2 flex flex-wrap items-center justify-between gap-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-red-500/10 text-red-500 flex items-center justify-center text-xl">
+                                    <i class="fa-brands fa-youtube"></i>
+                                </div>
+                                <div>
+                                    <h3 data-i18n="videoCardTitle" class="font-bold text-sm sm:text-base text-slate-900 dark:text-white">
+                                        الدليل العملي الشامل لتصبح ذكياً 🧠
+                                    </h3>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">
+                                        Abouawd Studio • محمد عوض خير
+                                    </p>
+                                </div>
+                            </div>
+                            <a href="https://youtu.be/lyxHvuPzUco?si=yNFzHiQeSiw7_CTI" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs sm:text-sm font-bold transition-all shadow-md shadow-red-600/20">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                <span data-i18n="watchOnYt">مشاهدة على يوتيوب</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Video Roadmap & Quick Summary -->
+                    <div class="lg:col-span-5 bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-xl border border-slate-200/80 dark:border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 data-i18n="roadmapTitle" class="text-lg sm:text-xl font-extrabold flex items-center gap-2">
+                                    <i class="fa-solid fa-compass text-indigo-500"></i>
+                                    <span>خارطة طريق الفيديو الذكية</span>
+                                </h3>
+                                <span class="text-xs font-bold px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                                    7:10 MIN
+                                </span>
+                            </div>
+                            <p data-i18n="roadmapSubtitle" class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-5">
+                                اضغط على أي محور لاستكشاف القاعدة الذهبية وتطبيقها فوراً:
+                            </p>
+
+                            <!-- Interactive Chapters List -->
+                            <div id="chaptersList" class="space-y-3">
+                                <!-- Populated via JS -->
+                            </div>
+                        </div>
+
+                        <!-- Active Insight Box -->
+                        <div id="chapterInsightBox" class="mt-5 p-4 rounded-2xl bg-gradient-to-br from-indigo-500/10 via-sky-500/10 to-emerald-500/10 border border-indigo-500/20">
+                            <div class="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-bold text-xs uppercase tracking-wider mb-1">
+                                <i class="fa-solid fa-lightbulb"></i>
+                                <span data-i18n="keyTakeawayLabel">الخلاصة التنفيذية</span>
+                            </div>
+                            <p id="chapterInsightText" class="text-sm font-medium text-slate-700 dark:text-slate-200 leading-relaxed">
+                                العقل البشري يتمتع بالمرونة العصبية (Neuroplasticity)؛ كل مهارة تتعلمها بتركيز تعيد تشكيل الروابط العصبية وتزيد من سرعة بديهتك.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pillarsSection" class="py-12 bg-slate-100/70 dark:bg-slate-900/40 border-y border-slate-200/70 dark:border-slate-800/70">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                    <div>
+                        <span data-i18n="pillarsTag" class="text-xs font-extrabold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+                            منهجية عملية متكاملة
+                        </span>
+                        <h2 data-i18n="pillarsTitle" class="text-2xl sm:text-3xl font-black mt-1">
+                            الأركان الستة لبناء عقل أكثر ذكاءً
+                        </h2>
+                    </div>
+                    <!-- Filter Buttons -->
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="filterPillars('all')" id="filter-all" data-i18n="filterAll" class="pillar-filter px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-indigo-600 text-white shadow-md shadow-indigo-600/20 transition-all">الكل (6)</button>
+                        <button onclick="filterPillars('mindset')" id="filter-mindset" data-i18n="filterMindset" class="pillar-filter px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition-all">التفكير والتعلم</button>
+                        <button onclick="filterPillars('lifestyle')" id="filter-lifestyle" data-i18n="filterLifestyle" class="pillar-filter px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition-all">التركيز ونمط الحياة</button>
+                    </div>
+                </div>
+
+                <!-- Pillars Cards Container -->
+                <div id="pillarsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Rendered dynamically via JS -->
+                </div>
+            </div>
+        </section>
+
+        <section id="habitsSection" class="py-14">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200/80 dark:border-slate-800">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <!-- Left/Right Overview & Progress Bar -->
+                        <div class="lg:col-span-5 space-y-4">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold">
+                                <i class="fa-solid fa-check-double"></i>
+                                <span data-i18n="habitsBadge">التطبيق اليومي يصنع الفارق</span>
+                            </div>
+                            <h2 data-i18n="habitsTitle" class="text-2xl sm:text-3xl font-black">
+                                متتبع العادات الذكية اليومي
+                            </h2>
+                            <p data-i18n="habitsDesc" class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                                الذكاء الحقيقي هو نتاج ما تفعله يومياً. حدد المهام العقلية والصحية التي أنجزتها اليوم لرفع مؤشر لياقتك الذهنية.
+                            </p>
+
+                            <!-- Progress Card -->
+                            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/70 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span data-i18n="dailyProgressLabel" class="text-sm font-bold text-slate-700 dark:text-slate-200">معدل الإنجاز الذهني اليوم</span>
+                                    <span id="habitPercentText" class="text-xl font-black text-indigo-600 dark:text-indigo-400">0%</span>
+                                </div>
+                                <div class="w-full h-3.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                                    <div id="habitProgressBar" class="h-full bg-gradient-to-r from-indigo-600 via-sky-500 to-emerald-500 rounded-full transition-all duration-500" style="width: 0%"></div>
+                                </div>
+                                <p id="habitStatusMsg" class="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                                    ابدأ بعادة واحدة الآن لتنشيط مساراتك العصبية!
+                                </p>
+                            </div>
+
+                            <button onclick="resetHabits()" class="inline-flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-red-500 transition-colors">
+                                <i class="fa-solid fa-rotate-right"></i>
+                                <span data-i18n="resetHabitsBtn">إعادة تعيين مهام اليوم</span>
+                            </button>
+                        </div>
+
+                        <!-- Habits Interactive Checklist -->
+                        <div id="habitsListContainer" class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                            <!-- Rendered dynamically via JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="labSection" class="py-14 bg-slate-100/70 dark:bg-slate-900/40 border-t border-slate-200/70 dark:border-slate-800/70">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <span data-i18n="labBadge" class="text-xs font-extrabold uppercase tracking-wider text-sky-600 dark:text-sky-400">
+                        أدوات عملية تفاعلية
+                    </span>
+                    <h2 data-i18n="labTitle" class="text-2xl sm:text-3xl font-black mt-1">
+                        مختبر تدريب العقل والتركيز 🧪
+                    </h2>
+                    <p data-i18n="labSubtitle" class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+                        ثلاث أدوات تفاعلية لتطبيق أهم تقنيات الفيديو عملياً في نفس اللحظة.
+                    </p>
+                </div>
+
+                <!-- Lab Tabs Navigation -->
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8">
+                    <button onclick="switchLabTab('feynman')" id="tabBtn-feynman" class="lab-tab-btn flex items-center gap-2 px-5 py-3 rounded-2xl font-bold text-sm bg-indigo-600 text-white shadow-lg shadow-indigo-600/25 transition-all">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                        <span data-i18n="tabFeynman">1. أداة تقنية فاينمان للفهم العميق</span>
+                    </button>
+                    <button onclick="switchLabTab('pomodoro')" id="tabBtn-pomodoro" class="lab-tab-btn flex items-center gap-2 px-5 py-3 rounded-2xl font-bold text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-all">
+                        <i class="fa-solid fa-stopwatch"></i>
+                        <span data-i18n="tabPomodoro">2. مؤقت التركيز العميق</span>
+                    </button>
+                    <button onclick="switchLabTab('memory')" id="tabBtn-memory" class="lab-tab-btn flex items-center gap-2 px-5 py-3 rounded-2xl font-bold text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-all">
+                        <i class="fa-solid fa-border-all"></i>
+                        <span data-i18n="tabMemory">3. تحدي الذاكرة العاملة</span>
+                    </button>
+                </div>
+
+                <!-- Tab 1: Feynman Technique Interactive Workspace -->
+                <div id="labPanel-feynman" class="lab-panel bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200/80 dark:border-slate-800">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                        <div class="lg:col-span-7 space-y-4">
+                            <div class="flex items-center justify-between">
+                                <h3 data-i18n="feynmanHeader" class="text-xl font-extrabold flex items-center gap-2">
+                                    <i class="fa-solid fa-graduation-cap text-indigo-500"></i>
+                                    <span>مُطبّق تقنية فاينمان (تعلّم بالشرح البسيط)</span>
+                                </h3>
+                                <button onclick="loadFeynmanExample()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 transition-colors">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                    <span data-i18n="feynmanLoadExample">تجربة مثال جاهز</span>
+                                </button>
+                            </div>
+                            <p data-i18n="feynmanIntro" class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+                                "إذا لم تستطع شرح الفكرة لطفل في العاشرة من عمره، فأنت لم تفهمها جيداً بعد." املأ الخانات لتحليل مدى استيعابك:
+                            </p>
+
+                            <div>
+                                <label data-i18n="feynmanLabelConcept" class="block text-xs font-bold mb-1.5 text-slate-700 dark:text-slate-300">1. المفهوم أو المهارة التي تتعلمها الآن:</label>
+                                <input id="feynmanConcept" type="text" oninput="evaluateFeynman()" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm" placeholder="مثال: المرونة العصبية (Neuroplasticity)">
+                            </div>
+
+                            <div>
+                                <label data-i18n="feynmanLabelExplain" class="block text-xs font-bold mb-1.5 text-slate-700 dark:text-slate-300">2. اشرحها بكلماتك البسيطة دون مصطلحات معقدة:</label>
+                                <textarea id="feynmanExplain" rows="3" oninput="evaluateFeynman()" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm" placeholder="اشرح الفكرة وكأنك تحدث صديقاً غير متخصص..."></textarea>
+                            </div>
+
+                            <div>
+                                <label data-i18n="feynmanLabelAnalogy" class="block text-xs font-bold mb-1.5 text-slate-700 dark:text-slate-300">3. ابتكر تشبيهاً أو مثالاً من الحياة اليومية:</label>
+                                <input id="feynmanAnalogy" type="text" oninput="evaluateFeynman()" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm" placeholder="مثال: تشبه شق طريق جديد في الغابة يزداد اتساعاً كلما مشيت فيه أكثر.">
+                            </div>
+                        </div>
+
+                        <!-- Feynman Clarity Meter & Output Card -->
+                        <div class="lg:col-span-5 flex flex-col justify-between bg-slate-50 dark:bg-slate-800/60 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-700/70">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span data-i18n="feynmanScoreLabel" class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">مؤشر وضوح الفهم</span>
+                                    <span id="feynmanClarityBadge" class="px-2.5 py-1 rounded-lg text-xs font-black bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">0%</span>
+                                </div>
+                                <div class="w-full h-2.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden mb-5">
+                                    <div id="feynmanProgress" class="h-full bg-gradient-to-r from-indigo-500 to-emerald-500 transition-all duration-300" style="width: 0%"></div>
+                                </div>
+
+                                <h4 data-i18n="feynmanPreviewTitle" class="text-sm font-bold mb-2 text-slate-800 dark:text-slate-100">بطاقة المعرفة الملخصة:</h4>
+                                <div id="feynmanPreviewBox" class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 min-h-[140px] text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed whitespace-pre-line">
+                                    اكتب في الحقول المجاورة لتوليد بطاقة المراجعة الذكية الخاصة بك...
+                                </div>
+                            </div>
+
+                            <div class="mt-5 flex flex-wrap gap-3">
+                                <button onclick="copyFeynmanCard()" class="flex-1 py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md shadow-indigo-600/20 transition-all">
+                                    <i class="fa-regular fa-copy"></i>
+                                    <span data-i18n="copyCardBtn">نسخ بطاقة الفهم (+15 XP)</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Deep Focus Pomodoro Timer -->
+                <div id="labPanel-pomodoro" class="lab-panel hidden bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200/80 dark:border-slate-800">
+                    <div class="max-w-xl mx-auto text-center space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">
+                            <i class="fa-solid fa-fire"></i>
+                            <span data-i18n="pomoTag">التركيز العميق يضاعف سرعة الاستيعاب</span>
+                        </div>
+                        <h3 data-i18n="pomoTitle" class="text-2xl font-black">مؤقت جلسات التركيز العميق (Deep Work)</h3>
+
+                        <!-- Mode Selector -->
+                        <div class="inline-flex p-1.5 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                            <button onclick="setTimerMode(25, 'focus')" id="pomoModeFocus" data-i18n="pomoFocusBtn" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-indigo-600 text-white transition-all">تركيز عميق (25 د)</button>
+                            <button onclick="setTimerMode(5, 'break')" id="pomoModeBreak" data-i18n="pomoBreakBtn" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300 transition-all">راحة دماغية (5 د)</button>
+                        </div>
+
+                        <!-- Big Timer Display -->
+                        <div class="py-8 px-6 rounded-3xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+                            <div id="timerDisplay" class="text-6xl sm:text-7xl font-black tracking-wider font-mono text-indigo-600 dark:text-indigo-400">
+                                25:00
+                            </div>
+                            <p id="timerStateText" data-i18n="pomoReadyText" class="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 mt-3">
+                                أبعد الهاتف، حدد هدفاً واحداً، وابدأ جلسة التركيز.
+                            </p>
+                        </div>
+
+                        <!-- Timer Controls -->
+                        <div class="flex items-center justify-center gap-4">
+                            <button id="timerStartBtn" onclick="toggleTimer()" class="px-8 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm sm:text-base flex items-center gap-2 shadow-lg shadow-indigo-600/25 transition-all active:scale-95">
+                                <i id="timerBtnIcon" class="fa-solid fa-play"></i>
+                                <span id="timerBtnText" data-i18n="startBtn">بدء الجلسة</span>
+                            </button>
+                            <button onclick="resetTimer()" class="px-5 py-3.5 rounded-2xl bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-sm flex items-center gap-2 transition-all">
+                                <i class="fa-solid fa-rotate-left"></i>
+                                <span data-i18n="resetBtn">إعادة</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Working Memory Matrix Mini-Game -->
+                <div id="labPanel-memory" class="lab-panel hidden bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200/80 dark:border-slate-800">
+                    <div class="max-w-xl mx-auto text-center space-y-5">
+                        <div class="flex items-center justify-between bg-slate-50 dark:bg-slate-800/80 px-5 py-3 rounded-2xl border border-slate-200 dark:border-slate-700">
+                            <div class="text-start">
+                                <span data-i18n="memLevelLabel" class="text-xs text-slate-500 dark:text-slate-400 block font-bold">المستوى الحالي</span>
+                                <span id="memoryLevelText" class="text-lg font-black text-indigo-600 dark:text-indigo-400">1</span>
+                            </div>
+                            <div class="text-center">
+                                <span id="memoryStatusBanner" data-i18n="memPromptReady" class="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-200">
+                                    اضغط "ابدأ التحدي" وراقب المربعات المضيئة!
+                                </span>
+                            </div>
+                            <div class="text-end">
+                                <span data-i18n="memBestLabel" class="text-xs text-slate-500 dark:text-slate-400 block font-bold">أعلى نتيجة</span>
+                                <span id="memoryBestText" class="text-lg font-black text-emerald-600 dark:text-emerald-400">0</span>
+                            </div>
+                        </div>
+
+                        <!-- 4x4 Interactive Grid -->
+                        <div id="memoryGrid" class="grid grid-cols-4 gap-3 max-w-xs mx-auto aspect-square p-3 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                            <!-- 16 tiles generated via JS -->
+                        </div>
+
+                        <button id="startMemoryBtn" onclick="startMemoryRound()" class="px-7 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-lg shadow-indigo-600/25 transition-all">
+                            <i class="fa-solid fa-bolt me-1"></i>
+                            <span data-i18n="startMemoryBtnText">ابدأ التحدي البصري</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="quizSection" class="py-14">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-200/80 dark:border-slate-800">
+                    <div class="text-center max-w-2xl mx-auto mb-8">
+                        <span data-i18n="quizBadge" class="text-xs font-extrabold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+                            تشخيص تفاعلي سريع
+                        </span>
+                        <h2 data-i18n="quizTitle" class="text-2xl sm:text-3xl font-black mt-1">
+                            اختبر منظومة عادات الذكاء لديك 📊
+                        </h2>
+                        <p data-i18n="quizDesc" class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+                            أجب عن هذه الأسئلة الـ 5 المستخلصة من الدليل العملي لتعرف نقاط قوتك والركن الذي يحتاج إلى تركيزك هذا الأسبوع.
+                        </p>
+                    </div>
+
+                    <!-- Quiz Questions Container -->
+                    <div id="quizContainer" class="space-y-6">
+                        <!-- Rendered via JS -->
+                    </div>
+
+                    <!-- Quiz Result Box -->
+                    <div id="quizResultBox" class="hidden mt-8 p-6 rounded-2xl bg-gradient-to-br from-indigo-500/10 via-sky-500/10 to-emerald-500/10 border border-indigo-500/30 text-center space-y-3">
+                        <div class="w-14 h-14 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-2xl mx-auto shadow-lg">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <h3 id="quizResultTitle" class="text-xl font-black text-slate-900 dark:text-white"></h3>
+                        <p id="quizResultAdvice" class="text-sm text-slate-600 dark:text-slate-300 max-w-xl mx-auto leading-relaxed"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-10 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center space-y-5">
+            <!-- Channel & App Identity -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-sky-500 flex items-center justify-center text-white text-lg shadow-md">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <div class="text-start">
+                    <p id="footerAppTitle" class="font-bold text-sm text-slate-900 dark:text-white">
+                        الدليل العملي الشامل لتصبح ذكياً 🧠
+                    </p>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">
+                        Abouawd Studio • YouTube Interactive Companion
+                    </p>
+                </div>
+            </div>
+
+            <!-- Highlighted Requested Signature Card -->
+            <div class="px-6 py-4 rounded-2xl bg-gradient-to-r from-indigo-500/10 via-sky-500/10 to-emerald-500/10 border border-indigo-500/30 shadow-sm max-w-xl w-full">
+                <p class="text-base sm:text-lg font-black text-slate-900 dark:text-white tracking-wide flex items-center justify-center gap-2 flex-wrap">
+                    <i class="fa-solid fa-wand-magic-sparkles text-indigo-500"></i>
+                    <span>تصميم محمد عوض خير بمساعدة Gemini 4 Argon</span>
+                </p>
+                <p id="footerSubCredit" class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 mt-1">
+                    Designed by Mohammed Awd Kheir with the assistance of Gemini 4 Argon
+                </p>
+            </div>
+
+            <div class="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400">
+                <a href="https://youtu.be/lyxHvuPzUco?si=yNFzHiQeSiw7_CTI" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-500 transition-colors flex items-center gap-1.5 font-semibold">
+                    <i class="fa-brands fa-youtube text-red-500 text-base"></i>
+                    <span data-i18n="footerWatchLink">رابط الفيديو الأصلي على يوتيوب</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = 'ar';
+        let currentFilter = 'all';
+        let globalXP = 0;
+        let completedPillars = new Set();
+        let completedHabits = new Set([0, 2]); // Pre-check a couple so user sees immediate interactivity
+        let quizAnswers = {};
+
+        const i18n = {
+            ar: {
+                navTitle: "الدليل العملي لتصبح ذكياً",
+                navSubtitle: "Abouawd Studio • دليلك التفاعلي",
+                navVideo: "الفيديو والملخص",
+                navPillars: "الأركان الـ 6",
+                navHabits: "متتبع العادات",
+                navLab: "مختبر العقل",
+                navQuiz: "اختبار التقييم",
+                scoreLabel: "نقاط الذكاء العملي:",
+                langBtnText: "English",
+                heroBadge: "تطبيق ويب تفاعلي مبني على محتوى الفيديو",
+                heroTitle: 'الدليل العملي الشامل <span class="gradient-text">لتصبح ذكياً 🧠</span>',
+                heroDesc: "الذكاء ليس مجرد موهبة وراثية ثابتة، بل هو مهارة ومنظومة عادات يومية قابلة للتطوير. استكشف خطوات الفيديو وحوّلها إلى ممارسات عملية عبر الأدوات التفاعلية بالأسفل.",
+                videoCardTitle: "الدليل العملي الشامل لتصبح ذكياً 🧠",
+                watchOnYt: "مشاهدة على يوتيوب",
+                roadmapTitle: "خارطة طريق الفيديو الذكية",
+                roadmapSubtitle: "اضغط على أي محور لاستكشاف القاعدة الذهبية وتطبيقها فوراً:",
+                keyTakeawayLabel: "الخلاصة التنفيذية",
+                pillarsTag: "منهجية عملية متكاملة",
+                pillarsTitle: "الأركان الستة لبناء عقل أكثر ذكاءً",
+                filterAll: "الكل (6)",
+                filterMindset: "التفكير والتعلم",
+                filterLifestyle: "التركيز ونمط الحياة",
+                habitsBadge: "التطبيق اليومي يصنع الفارق",
+                habitsTitle: "متتبع العادات الذكية اليومي",
+                habitsDesc: "الذكاء الحقيقي هو نتاج ما تفعله يومياً. حدد المهام العقلية والصحية التي أنجزتها اليوم لرفع مؤشر لياقتك الذهنية.",
+                dailyProgressLabel: "معدل الإنجاز الذهني اليوم",
+                resetHabitsBtn: "إعادة تعيين مهام اليوم",
+                labBadge: "أدوات عملية تفاعلية",
+                labTitle: "مختبر تدريب العقل والتركيز 🧪",
+                labSubtitle: "ثلاث أدوات تفاعلية لتطبيق أهم تقنيات الفيديو عملياً في نفس اللحظة.",
+                tabFeynman: "1. أداة تقنية فاينمان للفهم العميق",
+                tabPomodoro: "2. مؤقت التركيز العميق",
+                tabMemory: "3. تحدي الذاكرة العاملة",
+                feynmanHeader: "مُطبّق تقنية فاينمان (تعلّم بالشرح البسيط)",
+                feynmanLoadExample: "تجربة مثال جاهز",
+                feynmanIntro: '"إذا لم تستطع شرح الفكرة لطفل في العاشرة من عمره، فأنت لم تفهمها جيداً بعد." املأ الخانات لتحليل مدى استيعابك:',
+                feynmanLabelConcept: "1. المفهوم أو المهارة التي تتعلمها الآن:",
+                feynmanLabelExplain: "2. اشرحها بكلماتك البسيطة دون مصطلحات معقدة:",
+                feynmanLabelAnalogy: "3. ابتكر تشبيهاً أو مثالاً من الحياة اليومية:",
+                feynmanScoreLabel: "مؤشر وضوح الفهم",
+                feynmanPreviewTitle: "بطاقة المعرفة الملخصة:",
+                copyCardBtn: "نسخ بطاقة الفهم (+15 XP)",
+                pomoTag: "التركيز العميق يضاعف سرعة الاستيعاب",
+                pomoTitle: "مؤقت جلسات التركيز العميق (Deep Work)",
+                pomoFocusBtn: "تركيز عميق (25 د)",
+                pomoBreakBtn: "راحة دماغية (5 د)",
+                pomoReadyText: "أبعد الهاتف، حدد هدفاً واحداً، وابدأ جلسة التركيز.",
+                startBtn: "بدء الجلسة",
+                pauseBtn: "إيقاف مؤقت",
+                resetBtn: "إعادة",
+                memLevelLabel: "المستوى الحالي",
+                memPromptReady: "اضغط 'ابدأ التحدي البصري' وراقب المربعات المضيئة!",
+                memPromptWatch: "راقب النمط جيداً...",
+                memPromptRepeat: "دورك الآن! اضغط على المربعات التي أضاءت.",
+                memBestLabel: "أعلى نتيجة",
+                startMemoryBtnText: "ابدأ التحدي البصري",
+                quizBadge: "تشخيص تفاعلي سريع",
+                quizTitle: "اختبر منظومة عادات الذكاء لديك 📊",
+                quizDesc: "أجب عن هذه الأسئلة الـ 5 المستخلصة من الدليل العملي لتعرف نقاط قوتك والركن الذي يحتاج إلى تركيزك هذا الأسبوع.",
+                footerAppTitle: "الدليل العملي الشامل لتصبح ذكياً 🧠",
+                footerWatchLink: "رابط الفيديو الأصلي على يوتيوب",
+                actionBtnLabel: "تطبيق التمرين (+20 XP)",
+                actionDoneLabel: "تم الاستيعاب والتطبيق ✓"
+            },
+            en: {
+                navTitle: "Practical Guide to Becoming Smart",
+                navSubtitle: "Abouawd Studio • Interactive Companion",
+                navVideo: "Video & Summary",
+                navPillars: "The 6 Pillars",
+                navHabits: "Habit Tracker",
+                navLab: "Brain Lab",
+                navQuiz: "Self-Assessment",
+                scoreLabel: "Smart XP Score:",
+                langBtnText: "العربية",
+                heroBadge: "Interactive Web App Based on the Video Content",
+                heroTitle: 'The Comprehensive Practical Guide <span class="gradient-text">to Becoming Smart 🧠</span>',
+                heroDesc: "Intelligence is not merely a fixed genetic trait—it is a trainable skill and a system of daily habits. Explore the video's pillars and turn them into daily practice with the interactive tools below.",
+                videoCardTitle: "The Comprehensive Practical Guide to Becoming Smart 🧠",
+                watchOnYt: "Watch on YouTube",
+                roadmapTitle: "Smart Video Roadmap",
+                roadmapSubtitle: "Click on any core milestone to explore its golden rule and apply it right away:",
+                keyTakeawayLabel: "Executive Takeaway",
+                pillarsTag: "Complete Actionable Framework",
+                pillarsTitle: "The 6 Pillars of Building a Smarter Brain",
+                filterAll: "All (6)",
+                filterMindset: "Mindset & Learning",
+                filterLifestyle: "Focus & Brain Lifestyle",
+                habitsBadge: "Daily Execution Makes the Difference",
+                habitsTitle: "Daily Smart Habits Tracker",
+                habitsDesc: "True intelligence is the compound result of what you do every day. Check off the cognitive and physical habits you completed today to boost your mental fitness.",
+                dailyProgressLabel: "Today's Cognitive Completion",
+                resetHabitsBtn: "Reset Today's Habits",
+                labBadge: "Hands-On Cognitive Tools",
+                labTitle: "Brain Training & Focus Lab 🧪",
+                labSubtitle: "Three interactive tools to practice the video's core techniques right now.",
+                tabFeynman: "1. Feynman Deep Learning Tool",
+                tabPomodoro: "2. Deep Focus Timer",
+                tabMemory: "3. Working Memory Challenge",
+                feynmanHeader: "Interactive Feynman Technique Builder",
+                feynmanLoadExample: "Load Sample Concept",
+                feynmanIntro: '"If you cannot explain a concept simply, you do not understand it well enough." Fill in the steps below to test your mastery:',
+                feynmanLabelConcept: "1. Concept or Skill You Are Learning:",
+                feynmanLabelExplain: "2. Explain It Simply in Plain Language (Zero Jargon):",
+                feynmanLabelAnalogy: "3. Create a Real-Life Analogy or Example:",
+                feynmanScoreLabel: "Comprehension Clarity Meter",
+                feynmanPreviewTitle: "Synthesized Knowledge Card:",
+                copyCardBtn: "Copy Knowledge Card (+15 XP)",
+                pomoTag: "Deep Work Multiplies Learning Speed",
+                pomoTitle: "Deep Work Focus Timer",
+                pomoFocusBtn: "Deep Focus (25m)",
+                pomoBreakBtn: "Brain Rest (5m)",
+                pomoReadyText: "Put your phone away, pick one clear goal, and start your focus block.",
+                startBtn: "Start Session",
+                pauseBtn: "Pause",
+                resetBtn: "Reset",
+                memLevelLabel: "Current Level",
+                memPromptReady: "Click 'Start Visual Challenge' and watch the glowing tiles!",
+                memPromptWatch: "Watch the pattern carefully...",
+                memPromptRepeat: "Your turn! Tap the tiles that lit up.",
+                memBestLabel: "Best Score",
+                startMemoryBtnText: "Start Visual Challenge",
+                quizBadge: "Quick Interactive Diagnostic",
+                quizTitle: "Assess Your Smart Habits System 📊",
+                quizDesc: "Answer these 5 questions based on the practical guide to discover your cognitive strengths and your #1 growth area this week.",
+                footerAppTitle: "The Comprehensive Practical Guide to Becoming Smart 🧠",
+                footerWatchLink: "Original YouTube Video Link",
+                actionBtnLabel: "Complete Exercise (+20 XP)",
+                actionDoneLabel: "Mastered & Applied ✓"
+            }
+        };
+
+        const videoChapters = [
+            {
+                time: "00:00",
+                icon: "fa-seedling",
+                titleAr: "1. حقيقة الذكاء والمرونة العصبية",
+                titleEn: "1. The Truth About Intelligence & Neuroplasticity",
+                insightAr: "الدماغ ليس قفصاً ثابتاً بل عضلة مرنة؛ كل تحدٍّ فكري جديد يبني مسارات عصبية أقوى ويزيد كفاءة التفكير.",
+                insightEn: "Your brain is not static—every deliberate mental challenge builds stronger neural pathways and sharpens cognitive speed."
+            },
+            {
+                time: "01:45",
+                icon: "fa-book-open-reader",
+                titleAr: "2. التعلم النشط مقابل التلقي السلبي",
+                titleEn: "2. Active Recall vs. Passive Consumption",
+                insightAr: "مشاهدة المعلومات أو قراءتها دون استرجاعها وشرحها تمنحك 'وهم المعرفة'. اختبر نفسك ولخص ما تعلمته دائماً.",
+                insightEn: "Passively watching or reading creates an 'illusion of competence'. Always test yourself and explain ideas in your own words."
+            },
+            {
+                time: "03:30",
+                icon: "fa-bullseye",
+                titleAr: "3. حماية الانتباه والتركيز العميق",
+                titleEn: "3. Protecting Attention & Deep Focus",
+                insightAr: "تشتيت الانتباه المستمر يضعف الذاكرة العاملة. تخصيص 30-60 دقيقة يومياً بلا مقاطعات يضاعف إنتاجك المعرفي.",
+                insightEn: "Constant task-switching drains working memory. Dedicating 30–60 uninterrupted minutes daily multiplies cognitive output."
+            },
+            {
+                time: "05:15",
+                icon: "fa-heart-pulse",
+                titleAr: "4. الوقود الحيوي: الرياضة، النوم، والاستمرارية",
+                titleEn: "4. Biological Fuel: Exercise, Sleep & Consistency",
+                insightAr: "الرياضة تضخ الأكسجين وتحفز بروتين BDNF لبناء خلايا الدماغ، والنوم العميق يثبت المعلومات في الذاكرة طويلة المدى.",
+                insightEn: "Physical exercise boosts BDNF to grow new brain connections, while deep sleep consolidates new learning into long-term memory."
+            }
+        ];
+
+        const pillarsData = [
+            {
+                id: 1,
+                category: "mindset",
+                icon: "fa-brain",
+                color: "from-indigo-500 to-violet-600",
+                titleAr: "العقلية المتنامية والمرونة العصبية",
+                titleEn: "Growth Mindset & Neuroplasticity",
+                descAr: "استبدل مقولة 'أنا لست ذكياً في هذا المجال' بـ 'لم أتقن هذا بعد'. الدماغ يعيد تشكيل روابطه العصبية كلما واجهت صعوبة وتجاوزتها.",
+                descEn: "Replace 'I am not smart at this' with 'I haven't mastered this yet.' Your brain physically rewires itself when you push through cognitive friction.",
+                exerciseAr: "تمرين عملي: اختر موضوعاً كنت تظنه صعباً وخصص له 15 دقيقة من الاستكشاف الفضولي اليوم.",
+                exerciseEn: "Action Step: Pick one topic you previously found intimidating and spend 15 minutes exploring its basics today."
+            },
+            {
+                id: 2,
+                category: "mindset",
+                icon: "fa-chalkboard-user",
+                color: "from-sky-500 to-blue-600",
+                titleAr: "التعلم النشط وتقنية فاينمان",
+                titleEn: "Active Learning & Feynman Technique",
+                descAr: "انتقل من القراءة السطحية إلى الفهم العميق عبر استرجاع المعلومة غيباً وشرحها بلغة بسيطة تكشف لك الفجوات المعرفية فوراً.",
+                descEn: "Move beyond passive reading to active recall by closing the book and explaining the core concept simply as if teaching a beginner.",
+                exerciseAr: "تمرين عملي: استخدم 'أداة تقنية فاينمان' في مختبر العقل بالأسفل لتلخيص فكرة تعلمتها اليوم.",
+                exerciseEn: "Action Step: Use the Interactive Feynman Builder in the Brain Lab below to summarize one idea you learned today."
+            },
+            {
+                id: 3,
+                category: "lifestyle",
+                icon: "fa-shield-halved",
+                color: "from-amber-500 to-orange-600",
+                titleAr: "التركيز العميق ومحاربة التشتت",
+                titleEn: "Deep Focus & Distraction Shield",
+                descAr: "الذكاء العملي يتطلب قدرة على إبقاء تركيزك على مشكلة واحدة لفترة كافية حتى تتكون الروابط العميقة في قشرة الدماغ.",
+                descEn: "Practical intelligence requires holding your attention on a single problem long enough to form deep neural connections.",
+                exerciseAr: "تمرين عملي: اضبط مؤقت التركيز بالأسفل على 25 دقيقة مع إغلاق كافة الإشعارات.",
+                exerciseEn: "Action Step: Run a 25-minute Deep Focus session using the timer below with all notifications silenced."
+            },
+            {
+                id: 4,
+                category: "mindset",
+                icon: "fa-magnifying-glass-chart",
+                color: "from-emerald-500 to-teal-600",
+                titleAr: "التفكير النقدي والأسئلة الجذرية",
+                titleEn: "Critical Thinking & First Principles",
+                descAr: "لا تقبل المعلومات كمسلمات جاهزة؛ اسأل دائماً: (لماذا؟ كيف يعمل هذا؟ وما الدليل؟) واربط المعارف الجديدة بما تعرفه مسبقاً.",
+                descEn: "Don't memorize isolated facts blindly. Ask 'Why?', 'How does this work?', and connect new concepts to existing mental models.",
+                exerciseAr: "تمرين عملي: عند قراءة أي معلومة اليوم، اطرح 3 أسئلة (لماذا - كيف - ماذا لو) حولها.",
+                exerciseEn: "Action Step: When reading any article today, ask 3 'Why / How / What if' questions about its core claim."
+            },
+            {
+                id: 5,
+                category: "lifestyle",
+                icon: "fa-dumbbell",
+                color: "from-rose-500 to-pink-600",
+                titleAr: "الوقود الحيوي: الرياضة والنوم",
+                titleEn: "Bio-Fuel: Exercise & Quality Sleep",
+                descAr: "العقل السليم في الجسم النشيط؛ التمارين الهوائية وتقوية العضلات تحسن تدفق الدم للدماغ، والنوم العميق ينظف السموم العصبية ويثبت الذاكرة.",
+                descEn: "Cardiovascular and strength exercise boost blood flow and BDNF in the brain, while 7–8 hours of sleep locks in memory.",
+                exerciseAr: "تمرين عملي: مارس 15-20 دقيقة من النشاط البدني لتنشيط الدورة الدموية الدماغية اليوم.",
+                exerciseEn: "Action Step: Complete 15–20 minutes of brisk movement or exercise today to energize cerebral blood flow."
+            },
+            {
+                id: 6,
+                category: "lifestyle",
+                icon: "fa-calendar-check",
+                color: "from-purple-500 to-indigo-600",
+                titleAr: "الاستمرارية والعادات المركبة",
+                titleEn: "Consistency & Compounding Habits",
+                descAr: "الذكاء ليس قفزة مفاجئة بل تراكم يومي بسيط (1% تحسن يومي). القراءة اليومية والتدوين يصنعان فارقاً هائلاً خلال أشهر قليلة.",
+                descEn: "Smartness compounds through small daily actions (1% better every day) rather than occasional bursts of cramming.",
+                exerciseAr: "تمرين عملي: التزم بـ 3 عادات يومية على الأقل في متتبع العادات بالأسفل.",
+                exerciseEn: "Action Step: Check off at least 3 daily brain habits in the tracker below."
+            }
+        ];
+
+        const habitsData = [
+            {
+                id: 0,
+                icon: "fa-book-open",
+                titleAr: "قراءة مركزة أو تعلم مهارة (20 دقيقة)",
+                titleEn: "Focused Reading or Skill Learning (20 mins)"
+            },
+            {
+                id: 1,
+                icon: "fa-comment-dots",
+                titleAr: "تطبيق تقنية فاينمان (شرح فكرة بكلماتك)",
+                titleEn: "Apply Feynman Technique (Explain 1 Idea Simply)"
+            },
+            {
+                id: 2,
+                icon: "fa-person-running",
+                titleAr: "تمرين بدني لتنشيط القلب والدماغ",
+                titleEn: "Physical Exercise for Heart & Brain Blood Flow"
+            },
+            {
+                id: 3,
+                icon: "fa-mobile-screen",
+                titleAr: "جلسة تركيز عميق بدون هاتف (30 دقيقة)",
+                titleEn: "Phone-Free Deep Focus Block (30 mins)"
+            },
+            {
+                id: 4,
+                icon: "fa-puzzle-piece",
+                titleAr: "حل مشكلة أو تحدي للذاكرة والتفكير",
+                titleEn: "Solve a Logic Problem or Memory Challenge"
+            },
+            {
+                id: 5,
+                icon: "fa-moon",
+                titleAr: "نوم عميق منتظم (7 - 8 ساعات)",
+                titleEn: "Quality Restorative Sleep (7–8 Hours)"
+            }
+        ];
+
+        const quizData = [
+            {
+                id: 0,
+                qAr: "1. عندما تصادف موضوعاً معقداً أو مهارة جديدة، كيف تتعامل معها غالباً؟",
+                qEn: "1. When you encounter a complex topic or new skill, how do you usually respond?",
+                options: [
+                    { textAr: "أتحمس لتقسيمها إلى أجزاء صغيرة وتعلمها تدريجياً", textEn: "I break it down into small parts and learn it step by step", score: 3 },
+                    { textAr: "أحاول فهمها سريعاً، وإن كانت صعبة أؤجلها لوقت لاحق", textEn: "I try briefly, and if it's hard I postpone it", score: 2 },
+                    { textAr: "أشعر أنها لا تناسب قدراتي وأتجنبها", textEn: "I feel it's not for me and avoid it", score: 1 }
+                ]
+            },
+            {
+                id: 1,
+                qAr: "2. كيف تراجع المعلومات المهمة بعد مشاهدة فيديو تعليمي أو قراءة كتاب؟",
+                qEn: "2. How do you review key information after watching an educational video or reading?",
+                options: [
+                    { textAr: "ألخصها بكلماتي الخاصة أو أشرحها لشخص آخر", textEn: "I summarize it in my own words or teach it to someone else", score: 3 },
+                    { textAr: "أكتفي بإعادة قراءة الملاحظات أو الخطوط المظللة", textEn: "I re-read my highlighted notes passively", score: 2 },
+                    { textAr: "أنتقل فوراً لمحتوى آخر دون مراجعة", textEn: "I move straight to the next video without reviewing", score: 1 }
+                ]
+            },
+            {
+                id: 2,
+                qAr: "3. ما هو متوسط أطول فترة تقضيها في تركيز عميق دون تفقد الهاتف؟",
+                qEn: "3. What is your average uninterrupted focus span without checking your phone?",
+                options: [
+                    { textAr: "أكثر من 40 دقيقة في بيئة هادئة", textEn: "More than 40 minutes in a distraction-free setup", score: 3 },
+                    { textAr: "حوالي 15 إلى 25 دقيقة", textEn: "Around 15 to 25 minutes", score: 2 },
+                    { textAr: "أقل من 10 دقائق بسبب الإشعارات المستمرة", textEn: "Less than 10 minutes due to constant notifications", score: 1 }
+                ]
+            },
+            {
+                id: 3,
+                qAr: "4. كيف تقيم اهتمامك بالرياضة البدنية والنوم الكافي لدعم نشاط دماغك؟",
+                qEn: "4. How consistent are your physical exercise and sleep habits for brain vitality?",
+                options: [
+                    { textAr: "أمارس الرياضة بانتظام وأحرص على نوم عميق متوازن", textEn: "I exercise regularly and prioritize restorative sleep", score: 3 },
+                    { textAr: "أهتم بأحدهما أحياناً وأهمل الآخر في أيام الضغط", textEn: "Moderate—sometimes consistent, sometimes irregular", score: 2 },
+                    { textAr: "قليل الحركة وأعاني من السهر المتكرر", textEn: "Sedentary routine and frequent late nights", score: 1 }
+                ]
+            },
+            {
+                id: 4,
+                qAr: "5. هل تخصص وقتاً يومياً ثابتاً (ولو 20 دقيقة) لتطوير عقلك ومعرفتك؟",
+                qEn: "5. Do you dedicate a fixed daily slot (even 20 mins) for deliberate mental growth?",
+                options: [
+                    { textAr: "نعم، لدي ورد يومي ثابت للقراءة والتعلم", textEn: "Yes, I have a non-negotiable daily learning habit", score: 3 },
+                    { textAr: "أفعل ذلك عدة مرات في الأسبوع حسب وقت الفراغ", textEn: "A few times a week whenever I find free time", score: 2 },
+                    { textAr: "نادراً، أعتمد على الصدفة فقط", textEn: "Rarely, only when randomly motivated", score: 1 }
+                ]
+            }
+        ];
+
+        function showToast(messageAr, messageEn) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            const text = currentLang === 'ar' ? messageAr : messageEn;
+            toast.className = "pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-2xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-xs sm:text-sm font-bold shadow-xl border border-slate-700 dark:border-slate-200 transition-all duration-300";
+            toast.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400 dark:text-emerald-600 text-base"></i><span>${text}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(10px)';
+                setTimeout(() => toast.remove(), 300);
+            }, 2800);
+        }
+
+        function addXP(points, reasonAr, reasonEn) {
+            globalXP += points;
+            const badge = document.getElementById('globalXpBadge');
+            if (badge) {
+                badge.textContent = `${globalXP} XP`;
+            }
+            showToast(`${reasonAr} (+${points} XP)`, `${reasonEn} (+${points} XP)`);
+        }
+
+        function renderChapters(activeIndex = 0) {
+            const list = document.getElementById('chaptersList');
+            const insightText = document.getElementById('chapterInsightText');
+            list.innerHTML = '';
+
+            videoChapters.forEach((ch, idx) => {
+                const isActive = idx === activeIndex;
+                const btn = document.createElement('button');
+                btn.className = `w-full text-start p-3.5 rounded-2xl border transition-all flex items-center justify-between gap-3 ${
+                    isActive
+                        ? 'bg-indigo-600 text-white border-indigo-600 shadow-md shadow-indigo-600/20'
+                        : 'bg-slate-50 dark:bg-slate-800/70 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-700'
+                }`;
+                btn.onclick = () => renderChapters(idx);
+
+                const title = currentLang === 'ar' ? ch.titleAr : ch.titleEn;
+                btn.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl ${isActive ? 'bg-white/20 text-white' : 'bg-indigo-500/10 text-indigo-500'} flex items-center justify-center">
+                            <i class="fa-solid ${ch.icon}"></i>
+                        </div>
+                        <span class="font-bold text-xs sm:text-sm">${title}</span>
+                    </div>
+                    <span class="text-xs font-mono px-2.5 py-1 rounded-lg ${isActive ? 'bg-white/20 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300'}">${ch.time}</span>
+                `;
+                list.appendChild(btn);
+            });
+
+            const activeChapter = videoChapters[activeIndex];
+            insightText.textContent = currentLang === 'ar' ? activeChapter.insightAr : activeChapter.insightEn;
+        }
+
+        function renderPillars() {
+            const grid = document.getElementById('pillarsGrid');
+            grid.innerHTML = '';
+
+            const filtered = currentFilter === 'all'
+                ? pillarsData
+                : pillarsData.filter(p => p.category === currentFilter);
+
+            filtered.forEach(pillar => {
+                const isDone = completedPillars.has(pillar.id);
+                const title = currentLang === 'ar' ? pillar.titleAr : pillar.titleEn;
+                const desc = currentLang === 'ar' ? pillar.descAr : pillar.descEn;
+                const exercise = currentLang === 'ar' ? pillar.exerciseAr : pillar.exerciseEn;
+                const btnLabel = isDone ? i18n[currentLang].actionDoneLabel : i18n[currentLang].actionBtnLabel;
+
+                const card = document.createElement('div');
+                card.className = "bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-lg border border-slate-200/80 dark:border-slate-800 flex flex-col justify-between transition-all hover:-translate-y-1";
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br ${pillar.color} text-white flex items-center justify-center text-xl shadow-md">
+                                <i class="fa-solid ${pillar.icon}"></i>
+                            </div>
+                            <span class="text-xs font-black px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
+                                #0${pillar.id}
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-extrabold text-slate-900 dark:text-white mb-2">${title}</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">${desc}</p>
+                        <div class="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200/70 dark:border-slate-700/70 mb-5">
+                            <p class="text-xs font-bold text-indigo-600 dark:text-indigo-400 leading-relaxed">
+                                <i class="fa-solid fa-bolt me-1"></i> ${exercise}
+                            </p>
+                        </div>
+                    </div>
+                    <button onclick="completePillar(${pillar.id})" class="w-full py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm transition-all ${
+                        isDone
+                            ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30'
+                            : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-md shadow-indigo-600/20'
+                    }">
+                        ${btnLabel}
+                    </button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterPillars(category) {
+            currentFilter = category;
+            ['all', 'mindset', 'lifestyle'].forEach(cat => {
+                const btn = document.getElementById(`filter-${cat}`);
+                if (cat === category) {
+                    btn.className = "pillar-filter px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-indigo-600 text-white shadow-md shadow-indigo-600/20 transition-all";
+                } else {
+                    btn.className = "pillar-filter px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition-all";
+                }
+            });
+            renderPillars();
+        }
+
+        function completePillar(id) {
+            if (!completedPillars.has(id)) {
+                completedPillars.add(id);
+                addXP(20, "تم تفعيل ركن جديد من أركان الذكاء!", "New Intelligence Pillar Mastered!");
+            } else {
+                completedPillars.delete(id);
+            }
+            renderPillars();
+        }
+
+        function renderHabits() {
+            const container = document.getElementById('habitsListContainer');
+            container.innerHTML = '';
+
+            habitsData.forEach(habit => {
+                const checked = completedHabits.has(habit.id);
+                const title = currentLang === 'ar' ? habit.titleAr : habit.titleEn;
+
+                const item = document.createElement('button');
+                item.onclick = () => toggleHabit(habit.id);
+                item.className = `p-4 rounded-2xl border text-start transition-all flex items-center gap-3.5 ${
+                    checked
+                        ? 'bg-emerald-500/10 border-emerald-500/40 text-slate-900 dark:text-white shadow-sm'
+                        : 'bg-slate-50 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-300 hover:border-indigo-400'
+                }`;
+
+                item.innerHTML = `
+                    <div class="w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center text-lg transition-all ${
+                        checked
+                            ? 'bg-emerald-500 text-white'
+                            : 'bg-white dark:bg-slate-700 text-slate-400 border border-slate-200 dark:border-slate-600'
+                    }">
+                        <i class="fa-solid ${checked ? 'fa-check' : habit.icon}"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <p class="text-xs sm:text-sm font-bold ${checked ? 'line-through opacity-80' : ''}">${title}</p>
+                        <span class="text-[11px] font-semibold text-indigo-600 dark:text-indigo-400">+10 XP</span>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+
+            updateHabitProgressUI();
+        }
+
+        function toggleHabit(id) {
+            if (completedHabits.has(id)) {
+                completedHabits.delete(id);
+            } else {
+                completedHabits.add(id);
+                addXP(10, "أحسنت! عادة ذكية جديدة أُنجزت اليوم", "Great job! Smart daily habit completed");
+            }
+            renderHabits();
+        }
+
+        function resetHabits() {
+            completedHabits.clear();
+            renderHabits();
+            showToast("تمت إعادة تعيين قائمة عادات اليوم", "Today's habit checklist has been reset");
+        }
+
+        function updateHabitProgressUI() {
+            const total = habitsData.length;
+            const done = completedHabits.size;
+            const percent = Math.round((done / total) * 100);
+
+            document.getElementById('habitPercentText').textContent = `${percent}%`;
+            document.getElementById('habitProgressBar').style.width = `${percent}%`;
+
+            const msgEl = document.getElementById('habitStatusMsg');
+            if (percent === 0) {
+                msgEl.textContent = currentLang === 'ar'
+                    ? "ابدأ بعادة واحدة الآن لتنشيط مساراتك العصبية!"
+                    : "Start with just one habit today to spark your neural pathways!";
+            } else if (percent < 60) {
+                msgEl.textContent = currentLang === 'ar'
+                    ? `بداية ممتازة! أنجزت ${done} من ${total} عادات ذكية اليوم.`
+                    : `Great start! You completed ${done} of ${total} smart habits today.`;
+            } else if (percent < 100) {
+                msgEl.textContent = currentLang === 'ar'
+                    ? "أداء رائع! أنت قريب جداً من إتمام يوم ذهني مثالي."
+                    : "Awesome momentum! You are super close to a 100% brain-optimized day.";
+            } else {
+                msgEl.textContent = currentLang === 'ar'
+                    ? "🏆 يوم ذهني كامل! الاستمرارية على هذا النهج تضمن لك عقلاً متقداً."
+                    : "🏆 100% Complete! Sustaining this system builds extraordinary intelligence.";
+            }
+        }
+
+        function switchLabTab(tabName) {
+            ['feynman', 'pomodoro', 'memory'].forEach(t => {
+                const panel = document.getElementById(`labPanel-${t}`);
+                const btn = document.getElementById(`tabBtn-${t}`);
+                if (t === tabName) {
+                    panel.classList.remove('hidden');
+                    btn.className = "lab-tab-btn flex items-center gap-2 px-5 py-3 rounded-2xl font-bold text-sm bg-indigo-600 text-white shadow-lg shadow-indigo-600/25 transition-all";
+                } else {
+                    panel.classList.add('hidden');
+                    btn.className = "lab-tab-btn flex items-center gap-2 px-5 py-3 rounded-2xl font-bold text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-all";
+                }
+            });
+        }
+
+        function evaluateFeynman() {
+            const concept = document.getElementById('feynmanConcept').value.trim();
+            const explain = document.getElementById('feynmanExplain').value.trim();
+            const analogy = document.getElementById('feynmanAnalogy').value.trim();
+
+            let score = 0;
+            if (concept.length > 2) score += 25;
+            if (explain.length > 20) score += 45;
+            else if (explain.length > 5) score += 20;
+            if (analogy.length > 10) score += 30;
+
+            document.getElementById('feynmanClarityBadge').textContent = `${score}%`;
+            document.getElementById('feynmanProgress').style.width = `${score}%`;
+
+            const preview = document.getElementById('feynmanPreviewBox');
+            if (!concept && !explain && !analogy) {
+                preview.textContent = currentLang === 'ar'
+                    ? "اكتب في الحقول المجاورة لتوليد بطاقة المراجعة الذكية الخاصة بك..."
+                    : "Fill in the fields to generate your synthesized Feynman knowledge card...";
+                return;
+            }
+
+            if (currentLang === 'ar') {
+                preview.textContent = `📌 المفهوم: ${concept || '---'}\n💡 الشرح البسيط: ${explain || '---'}\n🔗 التشبيه الواقعي: ${analogy || '---'}`;
+            } else {
+                preview.textContent = `📌 Concept: ${concept || '---'}\n💡 Simple Explanation: ${explain || '---'}\n🔗 Real-Life Analogy: ${analogy || '---'}`;
+            }
+        }
+
+        function loadFeynmanExample() {
+            if (currentLang === 'ar') {
+                document.getElementById('feynmanConcept').value = "المرونة العصبية (Neuroplasticity)";
+                document.getElementById('feynmanExplain').value = "هي قدرة الدماغ على تغيير وتقوية الروابط بين خلاياه كلما تعلمنا شيئاً جديداً ومارسناه باستمرار.";
+                document.getElementById('feynmanAnalogy').value = "تشبه شق طريق وسط العشب؛ في المرة الأولى يكون صعباً، ومع تكرار المشي يصبح طريقاً ممهداً وسريعاً.";
+            } else {
+                document.getElementById('feynmanConcept').value = "Neuroplasticity";
+                document.getElementById('feynmanExplain').value = "The brain's ability to reorganize and strengthen connections between neurons whenever we practice a new skill.";
+                document.getElementById('feynmanAnalogy').value = "Like walking through a grassy field: the first pass is tough, but repeated walks carve a smooth, fast trail.";
+            }
+            evaluateFeynman();
+            showToast("تم تحميل المثال التوضيحي بنجاح", "Sample Feynman concept loaded");
+        }
+
+        function copyFeynmanCard() {
+            const text = document.getElementById('feynmanPreviewBox').textContent;
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            addXP(15, "تم نسخ بطاقة الفهم إلى الحافظة!", "Knowledge card copied to clipboard!");
+        }
+
+        /* Pomodoro Timer Logic with Web Audio API Gentle Chime */
+        let timerSeconds = 25 * 60;
+        let initialTimerSeconds = 25 * 60;
+        let timerInterval = null;
+        let isTimerRunning = false;
+
+        function playGentleChime() {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(528, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.35);
+                gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.6);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.6);
+            } catch (e) {
+                // Audio context optional fallback
+            }
+        }
+
+        function updateTimerDisplay() {
+            const mins = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+            const secs = (timerSeconds % 60).toString().padStart(2, '0');
+            document.getElementById('timerDisplay').textContent = `${mins}:${secs}`;
+        }
+
+        function setTimerMode(minutes, mode) {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            initialTimerSeconds = minutes * 60;
+            timerSeconds = initialTimerSeconds;
+            updateTimerDisplay();
+
+            const focusBtn = document.getElementById('pomoModeFocus');
+            const breakBtn = document.getElementById('pomoModeBreak');
+            if (mode === 'focus') {
+                focusBtn.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-indigo-600 text-white transition-all";
+                breakBtn.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300 transition-all";
+            } else {
+                breakBtn.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-600 text-white transition-all";
+                focusBtn.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300 transition-all";
+            }
+            updateTimerButtonUI();
+        }
+
+        function updateTimerButtonUI() {
+            const icon = document.getElementById('timerBtnIcon');
+            const text = document.getElementById('timerBtnText');
+            if (isTimerRunning) {
+                icon.className = "fa-solid fa-pause";
+                text.textContent = i18n[currentLang].pauseBtn;
+            } else {
+                icon.className = "fa-solid fa-play";
+                text.textContent = i18n[currentLang].startBtn;
+            }
+        }
+
+        function toggleTimer() {
+            if (isTimerRunning) {
+                clearInterval(timerInterval);
+                isTimerRunning = false;
+            } else {
+                isTimerRunning = true;
+                playGentleChime();
+                timerInterval = setInterval(() => {
+                    if (timerSeconds > 0) {
+                        timerSeconds--;
+                        updateTimerDisplay();
+                    } else {
+                        clearInterval(timerInterval);
+                        isTimerRunning = false;
+                        playGentleChime();
+                        addXP(25, "أتممت جلسة تركيز عميق بنجاح!", "Deep Focus Session Completed!");
+                        updateTimerButtonUI();
+                    }
+                }, 1000);
+            }
+            updateTimerButtonUI();
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            timerSeconds = initialTimerSeconds;
+            updateTimerDisplay();
+            updateTimerButtonUI();
+        }
+
+        /* Working Memory Matrix Mini-Game Logic */
+        let memoryLevel = 1;
+        let memoryBest = 0;
+        let targetPattern = new Set();
+        let userSelections = new Set();
+        let canSelectTiles = false;
+
+        function initMemoryGrid() {
+            const grid = document.getElementById('memoryGrid');
+            grid.innerHTML = '';
+            for (let i = 0; i < 16; i++) {
+                const tile = document.createElement('button');
+                tile.id = `memTile-${i}`;
+                tile.className = "memory-tile w-full h-full rounded-xl bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 shadow-sm";
+                tile.onclick = () => handleTileClick(i);
+                grid.appendChild(tile);
+            }
+        }
+
+        function startMemoryRound() {
+            canSelectTiles = false;
+            userSelections.clear();
+            targetPattern.clear();
+            initMemoryGrid();
+
+            const count = Math.min(3 + memoryLevel, 9);
+            while (targetPattern.size < count) {
+                targetPattern.add(Math.floor(Math.random() * 16));
+            }
+
+            const banner = document.getElementById('memoryStatusBanner');
+            banner.textContent = i18n[currentLang].memPromptWatch;
+
+            // Highlight target tiles briefly
+            targetPattern.forEach(idx => {
+                const tile = document.getElementById(`memTile-${idx}`);
+                if (tile) {
+                    tile.className = "memory-tile w-full h-full rounded-xl bg-indigo-500 border-indigo-400 shadow-lg shadow-indigo-500/40 scale-95";
+                }
+            });
+
+            setTimeout(() => {
+                for (let i = 0; i < 16; i++) {
+                    const tile = document.getElementById(`memTile-${i}`);
+                    if (tile) {
+                        tile.className = "memory-tile w-full h-full rounded-xl bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 hover:border-indigo-400 shadow-sm";
+                    }
+                }
+                banner.textContent = i18n[currentLang].memPromptRepeat;
+                canSelectTiles = true;
+            }, 1100);
+        }
+
+        function handleTileClick(idx) {
+            if (!canSelectTiles || userSelections.has(idx)) return;
+
+            const tile = document.getElementById(`memTile-${idx}`);
+            if (targetPattern.has(idx)) {
+                userSelections.add(idx);
+                tile.className = "memory-tile w-full h-full rounded-xl bg-emerald-500 border-emerald-400 text-white flex items-center justify-center shadow-md";
+                tile.innerHTML = `<i class="fa-solid fa-check"></i>`;
+
+                if (userSelections.size === targetPattern.size) {
+                    canSelectTiles = false;
+                    playGentleChime();
+                    if (memoryLevel > memoryBest) {
+                        memoryBest = memoryLevel;
+                        document.getElementById('memoryBestText').textContent = memoryBest;
+                    }
+                    memoryLevel++;
+                    document.getElementById('memoryLevelText').textContent = memoryLevel;
+                    addXP(15, "ذاكرة بصرية رائعة! انتقلت للمستوى التالي", "Sharp working memory! Level up");
+                    setTimeout(startMemoryRound, 900);
+                }
+            } else {
+                canSelectTiles = false;
+                tile.className = "memory-tile w-full h-full rounded-xl bg-rose-500 border-rose-400 text-white flex items-center justify-center";
+                tile.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+                // Reveal missed tiles
+                targetPattern.forEach(tIdx => {
+                    if (!userSelections.has(tIdx)) {
+                        const missed = document.getElementById(`memTile-${tIdx}`);
+                        if (missed) missed.className = "memory-tile w-full h-full rounded-xl bg-indigo-500/50 border-indigo-400";
+                    }
+                });
+                memoryLevel = 1;
+                document.getElementById('memoryLevelText').textContent = memoryLevel;
+                document.getElementById('memoryStatusBanner').textContent = currentLang === 'ar'
+                    ? "انتهت الجولة! اضغط 'ابدأ التحدي البصري' للمحاولة مجدداً."
+                    : "Round over! Click 'Start Visual Challenge' to try again.";
+            }
+        }
+
+        function renderQuiz() {
+            const container = document.getElementById('quizContainer');
+            container.innerHTML = '';
+
+            quizData.forEach(item => {
+                const questionText = currentLang === 'ar' ? item.qAr : item.qEn;
+                const qBlock = document.createElement('div');
+                qBlock.className = "p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/70 space-y-3";
+
+                let optionsHTML = '';
+                item.options.forEach((opt, optIdx) => {
+                    const selected = quizAnswers[item.id] === opt.score;
+                    const optText = currentLang === 'ar' ? opt.textAr : opt.textEn;
+                    optionsHTML += `
+                        <button onclick="selectQuizOption(${item.id}, ${opt.score})" class="w-full text-start p-3 rounded-xl border text-xs sm:text-sm font-semibold transition-all flex items-center justify-between ${
+                            selected
+                                ? 'bg-indigo-600 text-white border-indigo-600 shadow-md shadow-indigo-600/20'
+                                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-indigo-400'
+                        }">
+                            <span>${optText}</span>
+                            <i class="fa-solid ${selected ? 'fa-circle-check' : 'fa-circle-dot opacity-30'}"></i>
+                        </button>
+                    `;
+                });
+
+                qBlock.innerHTML = `
+                    <h4 class="font-bold text-sm sm:text-base text-slate-900 dark:text-white">${questionText}</h4>
+                    <div class="grid grid-cols-1 gap-2">${optionsHTML}</div>
+                `;
+                container.appendChild(qBlock);
+            });
+
+            evaluateQuizResult();
+        }
+
+        function selectQuizOption(qId, score) {
+            const wasComplete = Object.keys(quizAnswers).length === quizData.length;
+            quizAnswers[qId] = score;
+            renderQuiz();
+            if (!wasComplete && Object.keys(quizAnswers).length === quizData.length) {
+                addXP(30, "أكملت التقييم الذاتي لعادات الذكاء!", "Completed the Smart Habits Assessment!");
+            }
+        }
+
+        function evaluateQuizResult() {
+            const box = document.getElementById('quizResultBox');
+            if (Object.keys(quizAnswers).length < quizData.length) {
+                box.classList.add('hidden');
+                return;
+            }
+
+            box.classList.remove('hidden');
+            const totalScore = Object.values(quizAnswers).reduce((a, b) => a + b, 0);
+            const titleEl = document.getElementById('quizResultTitle');
+            const adviceEl = document.getElementById('quizResultAdvice');
+
+            if (totalScore >= 13) {
+                titleEl.textContent = currentLang === 'ar'
+                    ? `نتيجتك: ${totalScore}/15 — عقلية متنامية عالية الكفاءة! 🌟`
+                    : `Your Score: ${totalScore}/15 — High-Performance Growth Mindset! 🌟`;
+                adviceEl.textContent = currentLang === 'ar'
+                    ? "أنت تطبق بالفعل معظم أسرار الدليل العملي! للحفاظ على هذا المستوى، ركز على زيادة تحديات التعلم العميق وتطبيق تقنية فاينمان في مجالات جديدة كلياً."
+                    : "You are already practicing the core pillars of the guide! To reach the next level, challenge yourself with harder domains and use the Feynman builder daily.";
+            } else if (totalScore >= 9) {
+                titleEl.textContent = currentLang === 'ar'
+                    ? `نتيجتك: ${totalScore}/15 — أساس جيد مع فرصة كبيرة للقفز 🚀`
+                    : `Your Score: ${totalScore}/15 — Solid Foundation with High Upside 🚀`;
+                adviceEl.textContent = currentLang === 'ar'
+                    ? "لديك وعي ممتاز، لكن التشتت أو التلقي السلبي قد يبطئ تقدمك. ابدأ هذا الأسبوع بجلسة تركيز عميق واحدة يومياً (25 دقيقة) ولخص ما تتعلمه بكلماتك."
+                    : "You have good awareness, but passive reading or digital distractions may slow you down. Commit to one 25-minute Deep Focus block daily this week.";
+            } else {
+                titleEl.textContent = currentLang === 'ar'
+                    ? `نتيجتك: ${totalScore}/15 — نقطة انطلاق جديدة لتنشيط قدراتك 💡`
+                    : `Your Score: ${totalScore}/15 — Fresh Starting Point for Brain Activation 💡`;
+                adviceEl.textContent = currentLang === 'ar'
+                    ? "لا تقلق! الذكاء عادة قابلة للبناء في أي وقت. ابدأ اليوم بخطوتين بسيطتين من الفيديو: 15 دقيقة رياضة لتنشيط الدماغ، و20 دقيقة تعلم نشط بدون هاتف."
+                    : "Don't worry—intelligence is a buildable system at any age! Start today with two simple steps from the video: 15 mins of physical movement and 20 mins of phone-free learning.";
+            }
+        }
+
+        function applyStaticTranslations() {
+            const dict = i18n[currentLang];
+            document.getElementById('navTitle').textContent = dict.navTitle;
+            document.getElementById('navSubtitle').textContent = dict.navSubtitle;
+            document.getElementById('scoreLabel').textContent = dict.scoreLabel;
+            document.getElementById('langBtnText').textContent = dict.langBtnText;
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key]) {
+                    if (key === 'heroTitle') {
+                        el.innerHTML = dict[key];
+                    } else {
+                        el.textContent = dict[key];
+                    }
+                }
+            });
+
+            // Update input placeholders for Feynman
+            if (currentLang === 'ar') {
+                document.getElementById('feynmanConcept').placeholder = "مثال: المرونة العصبية (Neuroplasticity)";
+                document.getElementById('feynmanExplain').placeholder = "اشرح الفكرة وكأنك تحدث صديقاً غير متخصص...";
+                document.getElementById('feynmanAnalogy').placeholder = "مثال: تشبه شق طريق جديد في الغابة يزداد اتساعاً كلما مشيت فيه أكثر.";
+            } else {
+                document.getElementById('feynmanConcept').placeholder = "e.g., Neuroplasticity";
+                document.getElementById('feynmanExplain').placeholder = "Explain the idea simply as if talking to a curious friend...";
+                document.getElementById('feynmanAnalogy').placeholder = "e.g., Like carving a trail in a forest that gets wider every time you walk it.";
+            }
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            const htmlEl = document.documentElement;
+            htmlEl.lang = currentLang;
+            htmlEl.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+
+            applyStaticTranslations();
+            renderChapters(0);
+            renderPillars();
+            renderHabits();
+            evaluateFeynman();
+            updateTimerButtonUI();
+            renderQuiz();
+        }
+
+        function toggleTheme() {
+            const htmlEl = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            htmlEl.classList.toggle('dark');
+
+            if (htmlEl.classList.contains('dark')) {
+                icon.className = "fa-solid fa-sun text-lg";
+                showToast("تم تفعيل الوضع الليلي المريح للعين 🌙", "Dark Mode Enabled 🌙");
+            } else {
+                icon.className = "fa-solid fa-moon text-lg";
+                showToast("تم تفعيل الوضع النهاري الساطع ☀️", "Light Mode Enabled ☀️");
+            }
+        }
+
+        window.onload = function () {
+            applyStaticTranslations();
+            renderChapters(0);
+            renderPillars();
+            renderHabits();
+            initMemoryGrid();
+            evaluateFeynman();
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>
